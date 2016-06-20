@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160427160640) do
+ActiveRecord::Schema.define(version: 20160620082905) do
+
+  create_table "news_and_notifications", force: :cascade do |t|
+    t.string   "name"
+    t.text     "summary"
+    t.string   "url"
+    t.datetime "published_at"
+    t.string   "guid"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
 
   create_table "subscribers", force: :cascade do |t|
     t.string   "email"
