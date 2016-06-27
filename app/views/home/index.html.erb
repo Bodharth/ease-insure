@@ -1,3 +1,7 @@
+<style type="text/css">
+.a { height:500px; overflow:hidden; }
+.b { background:#eee; }
+</style>
 <header style=" background:#edffdf">
   <div class="container">
     <div class="row">
@@ -18,8 +22,8 @@
         <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
         <span class="sr-only">Previous</span>
       </a>
-      <div class="carousel-inner" role="listbox">
-        <div class="item active">
+      <div class="carousel-inner a" role="listbox">
+        <div class="item b active">
           <% @news.each do |news|%>
             <p class="ticker-headline">
               <a href="<%= news.url%>">
@@ -28,16 +32,6 @@
             </p>
           <%end%>
         </div>
-        <div class="item">
-          <% @news.each do |news|%>
-            <p class="ticker-headline">
-              <a href="<%= news.url%>">
-                <strong><%= news.name%></strong> <%= news.summary.html_safe%>
-              </a>
-            </p>
-          <%end%>        
-        </div>
-
       </div>
       <!-- Controls -->
       <a class="down carousel-control" href="#carousel-example-vertical" role="button" data-slide="next">
@@ -95,3 +89,45 @@
 </div>
 <!-- Return to Top -->
 <a href="javascript:" id="return-to-top"><span aria-hidden="true" class="glyphicon glyphicon-chevron-up"></span></a>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+
+    if ($('.b').height() > $('.a').height()) {
+        setInterval(function () {
+
+            start();
+       }, 3000); 
+   
+    }
+});
+
+function animateContent(direction) {  
+    var animationOffset = $('.a').height() - $('.b').height();
+    if (direction == 'up') {
+        animationOffset = 0;
+    }
+
+    console.log("animationOffset:"+animationOffset);
+    $('.b').animate({ "marginTop": (animationOffset)+ "px" }, 90000);
+}
+
+function up(){
+    animateContent("up")
+}
+function down(){
+    animateContent("down")
+}
+
+function start(){
+ setTimeout(function () {
+    down();
+}, 2000);
+ setTimeout(function () {
+    up();
+}, 2000);
+   setTimeout(function () {
+    console.log("wait...");
+}, 5000);
+}    
+</script>
