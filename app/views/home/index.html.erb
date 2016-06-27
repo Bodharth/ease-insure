@@ -23,24 +23,20 @@
           <% @news.each do |news|%>
             <p class="ticker-headline">
               <a href="<%= news.url%>">
-                <strong><%= news.name%></strong>
+                <strong><%= news.name%></strong> <%= news.summary.html_safe%>
               </a>
             </p>
           <%end%>
         </div>
-<!--         <div class="item">
-          <p class="ticker-headline">
-            <a href="#">
-              <strong>Article Headline 1</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus eu odio fermentum tempus. Aliquam erat volutpat. Etiam arcu urna, lacinia sed dapibus sed, molestie ac mi.
-            </a>
-          </p>
-          
-          <p class="ticker-headline">
-            <a href="#">
-              <strong>Article Headline 1</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus eu odio fermentum tempus. Aliquam erat volutpat. Etiam arcu urna, lacinia sed dapibus sed, molestie ac mi.
-            </a>
-          </p>          
-        </div> -->
+        <div class="item">
+          <% @news.each do |news|%>
+            <p class="ticker-headline">
+              <a href="<%= news.url%>">
+                <strong><%= news.name%></strong> <%= news.summary.html_safe%>
+              </a>
+            </p>
+          <%end%>        
+        </div>
 
       </div>
       <!-- Controls -->
