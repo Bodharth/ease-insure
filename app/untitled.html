@@ -1,0 +1,130 @@
+<style type="text/css">
+.a { height:500px; overflow:hidden; }
+.b { background:#eee; }
+</style>
+<header style=" background:#edffdf">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center"> <a href="#" class="logo"><img src="assets/logo2.png" alt=""></a> </div>
+    </div>
+  </div>
+</header>
+<div class="container">
+  <h2 class="text-center" style="margin:40px 0; color:#c6ff9a">Stay tuned... We are launching soon</h2>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8">
+      <p><strong>Subscribe to get updates</strong></p>
+      <%= form_for(@subscriber, :html => {:class => 'input-group'}) do |f| %>
+        <%= f.email_field :email,class: 'form-control',placeholder: "Enter your email address" %> 
+        <span class="input-group-btn">
+        <%= f.submit 'Submit', class: 'btn btn-default'%>
+        </span>
+        <%end%>
+         <div id="carousel-example-generic" class="carousel slide underconstruction" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+              <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+              <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+              <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+            </ol>
+
+  <!-- Wrapper for slides -->
+              <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                  <h3>Lorem ipsum dolor sit amet</h3>
+                        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed ipsum lectus. Fusce fringilla velit et rhoncus ornare. Nam tincidunt lorem a fringilla vehicula. Nulla facilisi. Mauris commodo malesuada tristique. </p>
+                        <p>Sed vel vestibulum sapien. Nulla velit elit, suscipit nec velit vel, luctus pharetra sapien. Aliquam aliquet aliquet nisl nec porttitor. Vestibulum non commodo tortor. Sed varius arcu sem, vel euismod neque posuere sit amet. Curabitur sapien magna, volutpat non mi tempus, aliquet vulputate dui. Mauris in pellentesque enim. </p>
+                  
+                </div>
+                <div class="item">
+                  <h3>Lorem ipsum dolor sit amet</h3>
+                        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed ipsum lectus. Fusce fringilla velit et rhoncus ornare. Nam tincidunt lorem a fringilla vehicula. Nulla facilisi. Mauris commodo malesuada tristique. </p>
+                        <p>Sed vel vestibulum sapien. Nulla velit elit, suscipit nec velit vel, luctus pharetra sapien. Aliquam aliquet aliquet nisl nec porttitor. Vestibulum non commodo tortor. Sed varius arcu sem, vel euismod neque posuere sit amet. Curabitur sapien magna, volutpat non mi tempus, aliquet vulputate dui. Mauris in pellentesque enim. </p>
+                  
+                </div>
+              </div>
+
+  <!-- Controls -->
+  <!--<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>-->
+            </div>
+    </div>
+  <div class="col-sm-4"> 
+      <p><strong>Insurance News</strong></p>
+          <div id="carousel-example-vertical" class="carousel vertical slide">
+          <a class="up carousel-control" href="#carousel-example-vertical" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <div class="carousel-inner a" role="listbox">
+            <div class="item b active">
+              <% @news.each do |news|%>
+                <p class="ticker-headline">
+                  <a href="<%= news.url%>">
+                    <strong><%= news.name%></strong> <%= news.summary.html_safe%>
+                  </a>
+                </p>
+              <%end%>
+            </div>
+          </div>
+          <!-- Controls -->
+          <a class="down carousel-control" href="#carousel-example-vertical" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+  </div>
+  </div>
+</div>
+<!-- Return to Top -->
+<a href="javascript:" id="return-to-top"><span aria-hidden="true" class="glyphicon glyphicon-chevron-up"></span></a>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+
+    if ($('.b').height() > $('.a').height()) {
+        setInterval(function () {
+
+            start();
+       }, 3000); 
+   
+    }
+});
+
+function animateContent(direction) {  
+    var animationOffset = $('.a').height() - $('.b').height();
+    if (direction == 'up') {
+        animationOffset = 0;
+    }
+
+    console.log("animationOffset:"+animationOffset);
+    $('.b').animate({ "marginTop": (animationOffset)+ "px" }, 500000);
+}
+
+function up(){
+    animateContent("up")
+}
+function down(){
+    animateContent("down")
+}
+
+function start(){
+ setTimeout(function () {
+    down();
+}, 2000);
+ setTimeout(function () {
+    up();
+}, 2000);
+   setTimeout(function () {
+    console.log("wait...");
+}, 5000);
+}    
+</script>

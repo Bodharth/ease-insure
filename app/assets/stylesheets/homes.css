@@ -1,4 +1,5 @@
- .carousel {
+/* Removes the default 20px margin and creates some padding space for the indicators and controls */
+.carousel {
   margin-bottom: 0;
   padding: 0 40px 30px 40px;
 }
@@ -24,10 +25,7 @@
   background: #333333;
 }
 .underconstruction .item {
-  background:#1757b8;
-  padding:20px;
   color:#fff;
-  border-radius:5px;
   line-height:22px
 }
 .carousel-indicators {
@@ -57,15 +55,20 @@
 .btn-default a {
   color: #fff;
 }
-.vertical { padding:20px 20px; background:#fff; position:relative; border-radius:5px}
+.vertical {position:relative; border-radius:5px}
 .up {
-  left: 45%;
+  left: 47%;
   position: relative;
-  top: -50px;
+  top: -10px;
 }
+.ticker-headline a{  color:#555}
 
 .down {
-  left: 45%;
+  left: 47%;
   position: relative;
-  bottom: -50px;
+  bottom: -10px;
 }
+
+.newscarousel{ padding:0}
+.newscarousel .up.carousel-control{ background:#1757b8; border-radius:3px; color:#fff; font-size:12px; text-align:center; width:30px; height:30px; line-height:30px; display:inline-block}
+.newscarousel .down.carousel-control{ background:#1757b8; border-radius:3px; color:#fff; font-size:12px; text-align:center; width:30px; height:30px; line-height:30px; display:inline-block}
